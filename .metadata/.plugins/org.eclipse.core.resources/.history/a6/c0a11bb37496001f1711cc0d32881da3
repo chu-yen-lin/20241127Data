@@ -1,5 +1,0 @@
-package javaweb.exception;
-
-public class UserNotFoundException {
-
-}

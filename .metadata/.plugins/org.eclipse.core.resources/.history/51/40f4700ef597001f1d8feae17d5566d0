@@ -1,5 +1,0 @@
-package javaweb.filter;
-
-public class LoginFilter {
-
-}
