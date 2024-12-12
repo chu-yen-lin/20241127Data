@@ -1,0 +1,5 @@
+package com.example.cart.exception;
+
+public class GlobalExceptionHandler {
+
+}

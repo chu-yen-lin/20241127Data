@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="DeleteProductsTests" project="springboot-cart" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.example.cart.DeleteProductsTests" time="0.352" displayname="DeleteProductsTests" uniqueid="[engine:junit-jupiter]/[class:com.example.cart.DeleteProductsTests]">
+    <testcase name="add" classname="com.example.cart.DeleteProductsTests" time="0.352" displayname="add()" uniqueid="[engine:junit-jupiter]/[class:com.example.cart.DeleteProductsTests]/[method:add()]"/>
+  </testsuite>
+</testrun>

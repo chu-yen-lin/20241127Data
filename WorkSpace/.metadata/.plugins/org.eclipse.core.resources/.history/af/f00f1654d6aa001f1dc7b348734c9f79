@@ -1,0 +1,5 @@
+package com.example.cart.service.impl;
+
+public class UserServiceImpl implements UserService{
+
+}

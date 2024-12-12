@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+header{
+    background-color: var(--bs-c-primary)!important;
+}
+
+.logo{
+	width: 15%;
+}
+
+.logo img{
+	width: 80%;
+	object-fit:cover;
+}
+
+.navbar-nav-center .navbar-nav {
+        width: 95%;
+}
+
+.nav-item a {
+	font-weight: 500;
+	font-size: 1.1rem;
+    color: white!important;
+} 
+
+
+.account{
+	width: 15%;
+	cursor: pointer;
+}
+
+.account span{
+	width: 2.5rem!important;
+	height: 2.5rem!important;
+	
+}
+
+.account img {
+    width: 2.5rem!important;
+	height: 2.5rem!important;
+}
+
+.dropdown-menu li a:hover{
+	color: var(--bs-c-primary);
+	background-color: var(--bs-c-primary-l);
+}
+
+
+/* 網頁 */
+@media (min-width: 768px) {
+    .navbar-nav-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .navbar-nav-center .navbar-nav {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .dropdown-menu {
+    position: absolute;
+    inset: 0px 0px auto auto;
+    margin: 0px;
+    transform: translate(-2rem, 0.8rem);
+	}
+    
+}

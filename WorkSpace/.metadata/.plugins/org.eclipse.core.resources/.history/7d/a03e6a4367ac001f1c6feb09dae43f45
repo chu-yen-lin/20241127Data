@@ -1,0 +1,5 @@
+package com.tibame.tga105.aop;
+
+public class UserSessionCheckAspect {
+
+}

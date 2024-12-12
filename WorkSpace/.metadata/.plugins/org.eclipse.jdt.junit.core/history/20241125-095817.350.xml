@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="DeleteProductsTests" project="springboot-cart" tests="1" started="1" failures="0" errors="1" ignored="0">
+  <testsuite name="com.example.cart.DeleteProductsTests" time="0.314" displayname="DeleteProductsTests" uniqueid="[engine:junit-jupiter]/[class:com.example.cart.DeleteProductsTests]">
+    <testcase name="add" classname="com.example.cart.DeleteProductsTests" time="0.314" displayname="add()" uniqueid="[engine:junit-jupiter]/[class:com.example.cart.DeleteProductsTests]/[method:add()]">
+      <error>java.util.NoSuchElementException: No value present&#13;
+	at java.base/java.util.Optional.get(Optional.java:143)&#13;
+	at com.example.cart.DeleteProductsTests.add(DeleteProductsTests.java:19)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

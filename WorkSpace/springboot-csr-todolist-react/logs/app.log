@@ -1,0 +1,92 @@
+2024-11-19T14:06:13.983+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] .t.SpringbootCsrTodolistReactApplication : Starting SpringbootCsrTodolistReactApplication using Java 21.0.4 with PID 15452 (E:\eclipse\WorkSpace\springboot-csr-todolist-react\target\classes started by NTPU in E:\eclipse\WorkSpace\springboot-csr-todolist-react)
+2024-11-19T14:06:13.988+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] .t.SpringbootCsrTodolistReactApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-19T14:06:14.288+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-19T14:06:14.317+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 1 JPA repository interface.
+2024-11-19T14:06:14.568+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-19T14:06:14.578+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-19T14:06:14.578+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-19T14:06:14.609+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-19T14:06:14.609+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 598 ms
+2024-11-19T14:06:14.689+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-19T14:06:14.731+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-19T14:06:14.755+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-19T14:06:14.935+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-19T14:06:14.954+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-19T14:06:15.030+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5a48d186
+2024-11-19T14:06:15.031+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-19T14:06:15.518+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-19T14:06:15.543+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-19T14:06:15.675+08:00  WARN 15452 --- [springboot-csr-todolist-react] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-19T14:06:15.854+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-11-19T14:06:15.858+08:00  INFO 15452 --- [springboot-csr-todolist-react] [main] .t.SpringbootCsrTodolistReactApplication : Started SpringbootCsrTodolistReactApplication in 2.072 seconds (process running for 2.365)
+2024-11-19T14:06:35.725+08:00  INFO 15452 --- [springboot-csr-todolist-react] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-19T14:06:35.725+08:00  INFO 15452 --- [springboot-csr-todolist-react] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-19T14:06:35.726+08:00  INFO 15452 --- [springboot-csr-todolist-react] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-11-19T15:39:09.280+08:00  INFO 15452 --- [springboot-csr-todolist-react] [RMI TCP Connection(102)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-11-19T15:39:09.284+08:00  INFO 15452 --- [springboot-csr-todolist-react] [RMI TCP Connection(102)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-19T15:39:09.285+08:00  INFO 15452 --- [springboot-csr-todolist-react] [RMI TCP Connection(102)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-19T15:39:09.286+08:00  INFO 15452 --- [springboot-csr-todolist-react] [RMI TCP Connection(102)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-19T17:27:35.355+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] .t.SpringbootCsrTodolistReactApplication : Starting SpringbootCsrTodolistReactApplication using Java 21.0.4 with PID 17824 (E:\eclipse\WorkSpace\springboot-csr-todolist-react\target\classes started by NTPU in E:\eclipse\WorkSpace\springboot-csr-todolist-react)
+2024-11-19T17:27:35.356+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] .t.SpringbootCsrTodolistReactApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-19T17:27:35.648+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-19T17:27:35.676+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 1 JPA repository interface.
+2024-11-19T17:27:35.916+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-19T17:27:35.925+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-19T17:27:35.925+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-19T17:27:35.952+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-19T17:27:35.953+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 577 ms
+2024-11-19T17:27:36.026+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-19T17:27:36.051+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-19T17:27:36.066+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-19T17:27:36.217+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-19T17:27:36.232+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-19T17:27:36.312+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b5de9ac
+2024-11-19T17:27:36.313+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-19T17:27:36.734+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-19T17:27:36.759+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-19T17:27:36.891+08:00  WARN 17824 --- [springboot-csr-todolist-react] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-19T17:27:37.058+08:00  WARN 17824 --- [springboot-csr-todolist-react] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-11-19T17:27:37.059+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-19T17:27:37.060+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-19T17:27:37.063+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-19T17:27:37.069+08:00  INFO 17824 --- [springboot-csr-todolist-react] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-11-19T17:27:37.077+08:00 ERROR 17824 --- [springboot-csr-todolist-react] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-11-19T17:28:14.228+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] .t.SpringbootCsrTodolistReactApplication : Starting SpringbootCsrTodolistReactApplication using Java 21.0.4 with PID 17688 (E:\eclipse\WorkSpace\springboot-csr-todolist-react\target\classes started by NTPU in E:\eclipse\WorkSpace\springboot-csr-todolist-react)
+2024-11-19T17:28:14.229+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] .t.SpringbootCsrTodolistReactApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-19T17:28:14.518+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-19T17:28:14.547+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 1 JPA repository interface.
+2024-11-19T17:28:14.782+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-19T17:28:14.790+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-19T17:28:14.791+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-19T17:28:14.818+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-19T17:28:14.818+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 569 ms
+2024-11-19T17:28:14.895+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-19T17:28:14.919+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-19T17:28:14.935+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-19T17:28:15.085+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-19T17:28:15.100+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-19T17:28:15.180+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@18c820d2
+2024-11-19T17:28:15.181+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-19T17:28:15.592+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-19T17:28:15.616+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-19T17:28:15.741+08:00  WARN 17688 --- [springboot-csr-todolist-react] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-19T17:28:15.918+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-11-19T17:28:15.921+08:00  INFO 17688 --- [springboot-csr-todolist-react] [main] .t.SpringbootCsrTodolistReactApplication : Started SpringbootCsrTodolistReactApplication in 1.875 seconds (process running for 2.167)
+2024-11-19T17:28:50.105+08:00  INFO 17688 --- [springboot-csr-todolist-react] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-19T17:28:50.105+08:00  INFO 17688 --- [springboot-csr-todolist-react] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-19T17:28:50.105+08:00  INFO 17688 --- [springboot-csr-todolist-react] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
