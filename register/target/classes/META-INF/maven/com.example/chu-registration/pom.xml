@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Maven 版本號 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 專案基本信息 -->
+    <groupId>com.example</groupId> <!-- 這是你的組織或公司名稱 -->
+    <artifactId>chu-registration</artifactId> <!-- 專案名稱 -->
+    <version>1.0.0</version> <!-- 版本號 -->
+    <packaging>jar</packaging> <!-- 打包類型，這裡是 JAR 包 -->
+
+    <name>chu-registration</name> <!-- 專案全名 -->
+    <description>A simple user registration system</description> <!-- 專案描述 -->
+
+    <!-- 預設的 Java 版本 -->
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source> <!-- 這裡假設使用 Java 8 -->
+        <maven.compiler.target>1.8</maven.compiler.target> <!-- 這裡假設使用 Java 8 -->
+    </properties>
+
+    <!-- 依賴部分 -->
+      <dependencies>
+    <!-- Spring Boot Web -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <version>2.6.0</version> <!-- 指定版本 -->
+    </dependency>
+    <!--MY SQL -->
+    <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.33</version>  <!-- 請確認這是你需要的版本 -->
+</dependency>
+
+    <!-- Spring Boot Security Starter -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-security</artifactId>
+        <version>2.6.0</version> <!-- 指定版本 -->
+    </dependency>
+
+    <!-- Spring Boot Data JPA Starter -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+        <version>2.6.0</version> <!-- 指定版本 -->
+    </dependency>
+
+    <!-- H2 Database (can be replaced with your database) -->
+    <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>1.4.200</version> <!-- 指定版本 -->
+        <scope>runtime</scope>
+    </dependency>
+
+    <!-- Spring Boot Test Starter -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <version>2.6.0</version> <!-- 指定版本 -->
+        <scope>test</scope>
+    </dependency>
+
+    <!-- JAXB API for Java 11+ -->
+    <dependency>
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>2.3.1</version> <!-- 指定版本 -->
+    </dependency>
+
+    <!-- JAXB Runtime for Java 11+ -->
+    <dependency>
+        <groupId>org.glassfish.jaxb</groupId>
+        <artifactId>jaxb-runtime</artifactId>
+        <version>2.3.3</version> <!-- 指定版本 -->
+    </dependency>
+</dependencies>
+
+    <!-- 插件部分 -->
+    <build>
+        <plugins>
+            <!-- Spring Boot 插件，用於運行 Spring Boot 應用 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <!-- 用於編譯的 Java 插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source> <!-- 這裡假設您使用的是 Java 8 -->
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
