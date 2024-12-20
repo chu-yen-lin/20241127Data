@@ -29,7 +29,7 @@ public class AdminController {
 			temp = adminService.login(adminVO);
 			if(temp!=null) {
 				session.setAttribute("adminVO", temp);
-				result = temp.getAccount()+"歡迎回來";
+				result = temp.getAccount()+"登入成功";
 			}
 		}
 		map.put("message", result);

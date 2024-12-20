@@ -144,12 +144,12 @@
     });
 
     //會員搜尋
-    $(document).on("click", "button#searchbtn", function () {
+     $(document).on("click", "button#searchbtn", function () {
       const email = $("input#search").val().trim();
       $("tbody#user").empty();
 
       if (email != "") {
-        fetch(`/playball/UserController/fromadmin?email=${email}`)
+        fetch(`/UserController/fromadmin?email=${email}`)
           .then((resp) => {
             if (resp.status === 204) {
               console.log("resp.status===" + resp.status);
@@ -173,6 +173,17 @@
           });
       }
     });
+              //if (body.length != 0) {
+                //let html = "";
+                //for (let i = 0; i < body.length; i++) {
+                  //html += `<tr data-id='${body[i].id}'><th>${body[i].id}</th><td>${body[i].email}</td><td class='fouls'>${body[i].fouls}</td><td><button class="btn btn-success reduce">消除違規</button></td></tr>`;
+                //}
+                //$("tbody#user").append(html);
+              //}
+            //} catch (error) {
+              //console.log("沒有收到資料");
+            
+    //會員搜尋2
 
     //消除警告
     $(document).on("click", "button.reduce", function () {

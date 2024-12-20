@@ -13,3 +13,5 @@ public interface UserDAO {
 	public List<UserVO> getUserVOs(String email);
 	public List<UserVO> getUserVOs();
 }
+
+

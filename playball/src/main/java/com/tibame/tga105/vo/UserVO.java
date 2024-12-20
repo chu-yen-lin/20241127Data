@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "user")
 @Component
 public class UserVO implements Comparable<UserVO> {
 	@Id
@@ -25,7 +25,7 @@ public class UserVO implements Comparable<UserVO> {
 	private String password;
 
 
-	@Column(name = "FOULS", nullable = false, insertable = false)
+	@Column(name = "FOULS", nullable = false)
 	private Integer fouls;
 
 	public UserVO() {
@@ -88,6 +88,6 @@ public class UserVO implements Comparable<UserVO> {
 	public int compareTo(UserVO o) {
 		return Integer.compare(this.id, o.id);
 	}
-
+	
 
 }

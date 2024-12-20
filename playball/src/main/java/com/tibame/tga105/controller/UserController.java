@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +16,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+
 
 import com.tibame.tga105.service.UserService;
 import com.tibame.tga105.vo.UserVO;
 
 @RestController
-@RequestMapping("/playball/UserController")
+@RequestMapping("/UserController")
 public class UserController {
 	@Autowired
-	private UserService UserService;
+	private UserService userService;
 
 	@PostMapping("/login")
 	public Map<String, String> login(@RequestBody UserVO userVO, HttpSession session) {
@@ -33,7 +34,7 @@ public class UserController {
 		UserVO temp;
 		String result = "登入失敗";
 		if (userVO != null) {
-			temp = UserService.login(userVO);
+			temp = userService.login(userVO);
 			if (temp != null) {
 				session.setAttribute("userVO", temp);
 				result = temp.getEmail() + "歡迎回來";
@@ -48,7 +49,7 @@ public class UserController {
 		Map<String, String> map = new HashMap<String, String>();
 		String result = "操作失敗";
 		if (userVO != null) {
-			result = UserService.register(userVO);
+			result = userService.register(userVO);
 		}
 		map.put("message", result);
 		return map;
@@ -75,7 +76,7 @@ public class UserController {
 	@GetMapping("/fromadmin")
 	public ResponseEntity<List<UserVO>> searchUsers(@RequestParam("email") String email) {
 		if (email != null) {
-			List<UserVO> list = UserService.searchUsers(email);
+			List<UserVO> list = userService.searchUsers(email);
 			return ResponseEntity.ok(list);
 		}
 		return ResponseEntity.noContent().build();
@@ -86,17 +87,18 @@ public class UserController {
 		Map<String, String> map = new HashMap<String, String>();
 		String result = "操作失敗";
 		if (id != null) {
-			result = UserService.judge(id, -1) > 0 ? "登錄成功" : "登錄失敗";
+			result = userService.judge(id, -1) > 0 ? "登錄成功" : "登錄失敗";
 		}
 		map.put("message", result);
 		return map;
 	}
-	
-	@RestController
+	@Controller
 	public class FaviconController {
-	    @GetMapping("/favicon.ico")
-	    public void favicon() {
-	        // 什麼也不做，僅僅避免返回 404
+
+	    @RequestMapping("favicon.ico")
+	    public void favicon(HttpServletResponse response) {
+	        // 设置响应头，让浏览器理解这是一个空的响应，避免404错误
+	        response.setStatus(HttpServletResponse.SC_NO_CONTENT);
 	    }
 	}
 }
