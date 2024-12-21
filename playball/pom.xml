@@ -63,11 +63,6 @@
 			<groupId>io.lettuce</groupId>
 			<artifactId>lettuce-core</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.example</groupId>
-			<artifactId>springboot-cart</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 
 	<build>
