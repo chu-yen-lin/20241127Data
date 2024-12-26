@@ -191,7 +191,7 @@
       const text = $(this).closest("tr").find("td.fouls").text() - 1;
 
       if (confirm("確定消除警告?")) {
-        fetch(`/playball/UserController?id=${id}`, {
+        fetch(`/UserController?id=${id}`, {
           method: "PUT",
         })
           .then((resp) => resp.json())
