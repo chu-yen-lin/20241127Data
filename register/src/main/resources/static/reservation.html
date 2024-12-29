@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+    crossorigin="anonymous"
+  />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"
+  ></script>
+  <title>JamCloud 預約系統</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 900px;
+      margin-top: 50px;
+    }
+    h2 {
+      color: #007bff;
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .table {
+      margin-top: 30px;
+    }
+    .btn-secondary {
+      background-color: #6c757d;
+      border-color: #6c757d;
+    }
+    .btn-danger {
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+    .alert {
+      font-size: 1.2em;
+    }
+    #ava {
+      font-size: 1.2em;
+      color: #28a745;
+    }
+    h5 {
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>JamCloud 預約系統</h2>
+    <div class="alert alert-info">
+      使用者須知: 完成預約後若有異動請提前三天，無故缺席將被記錄違規，違規次數達兩次將無法提供預約，若要消除違規次數請聯絡社長。
+    </div>
+
+    <!-- 日期選擇區 -->
+    <div class="form-group">
+      <label for="date">選擇日期</label>
+      <input type="date" id="date" class="form-control" />
+    </div>
+
+    <!-- 時段選擇區 -->
+    <div class="form-group">
+      <label for="select">選擇時段</label>
+      <select id="select" class="form-select">
+        <option value="早上">早上</option>
+        <option value="中午">中午</option>
+        <option value="下午">下午</option>
+        <option value="晚上">晚上</option>
+      </select>
+    </div>
+
+    <!-- 顯示剩餘名額 -->
+    <div id="ava" class="text-center"></div>
+
+    <!-- 預約按鈕 -->
+    <div class="form-group text-center">
+      <button id="book" class="btn btn-primary">預約此時段</button>
+    </div>
+
+    <!-- 使用者資訊表格 -->
+    <div>
+      <h4>使用者預約紀錄</h4>
+      <table class="table table-bordered align-middle table-striped">
+        <thead>
+          <tr>
+            <th scope="col">順位</th>
+            <th scope="col">狀態</th>
+          </tr>
+        </thead>
+        <tbody id="user"></tbody>
+      </table>
+    </div>
+
+    <!-- 預約紀錄表格 -->
+    <div>
+      <h4>預約紀錄</h4>
+      <table class="table table-bordered align-middle table-striped">
+        <thead>
+          <tr>
+            <th scope="col">日期</th>
+            <th scope="col">時段</th>
+            <th scope="col">順位</th>
+            <th scope="col">取消預約</th>
+          </tr>
+        </thead>
+        <tbody id="record"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // 顯示使用者預約紀錄
+    function loadUserReservations() {
+      fetch("http://localhost:8082/api/reservations/user?userId=1")  // 修改為 8082 端口
+        .then((resp) => resp.json())
+        .then((body) => {
+          $("tbody#user").empty();
+          body.forEach(user => {
+            $("tbody#user").append(`
+              <tr><td>${user.bookOrder}</td><td>${user.status}</td></tr>
+            `);
+          });
+        });
+    }
+
+    // 顯示預約的剩餘空位
+    $(document).on("change", "input, select", function() {
+      const date = $("input").val();
+      const timeSlot = $("select").val();
+      if (date && timeSlot) {
+        fetch(`http://localhost:8082/api/reservations?date=${date}&timeSlot=${timeSlot}`)  // 修改為 8082 端口
+          .then((resp) => resp.json())
+          .then((body) => {
+            $("div#ava").text(`剩餘預約名額：${body.length}`);
+          });
+      }
+    });
+
+    // 預約時段
+    $(document).on("click", "button#book", function() {
+      const date = $("input").val();
+      const timeSlot = $("select").val();
+      const reservation = {
+        userId: 1, // 使用者 ID 需要根據實際情況設置
+        bookDate: date,
+        timeSlot: timeSlot,
+        bookOrder: "正取", // 假設為 "正取"
+        status: "未到",
+        sendMail: 0
+      };
+
+      fetch("http://localhost:8082/api/reservations", {  // 修改為 8082 端口
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(reservation)
+      })
+      .then((resp) => resp.json())
+      .then((data) => {
+        alert("預約成功");
+        loadReservations();
+      })
+      .catch((error) => {
+        alert("預約失敗，請再試一次！");
+      });
+    });
+
+    // 顯示預約紀錄
+    function loadReservations() {
+      const date = $("input").val();
+      const timeSlot = $("select").val();
+      if (date && timeSlot) {
+        fetch(`http://localhost:8082/api/reservations?date=${date}&timeSlot=${timeSlot}`)  // 修改為 8082 端口
+          .then((resp) => resp.json())
+          .then((body) => {
+            $("tbody#record").empty();
+            body.forEach(record => {
+              $("tbody#record").append(`
+                <tr data-id="${record.id}">
+                  <td>${record.bookDate}</td>
+                  <td>${record.timeSlot}</td>
+                  <td>${record.bookOrder}</td>
+                  <td><button class="btn btn-danger">取消</button></td>
+                </tr>
+              `);
+            });
+          });
+      }
+    }
+
+    // 取消預約
+    $(document).on("click", "button.btn-danger", function() {
+      let id = $(this).closest("tr").data("id");
+      fetch(`http://localhost:8082/api/reservations/${id}`, {  // 修改為 8082 端口
+        method: "DELETE"
+      }).then(() => {
+        alert("預約已取消");
+        loadReservations();
+      });
+    });
+
+    // 預設加載使用者預約紀錄和預約紀錄
+    loadUserReservations();
+    loadReservations();
+  </script>
+</body>
+</html>
+

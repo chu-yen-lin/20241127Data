@@ -11,33 +11,148 @@
       crossorigin="anonymous"
     />
     <script src="js/jquery.js"></script>
+    <!-- SweetAlert2 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <style>
-      h2 {
-        margin-top: 5%;
-        margin-left: 10%;
+      body {
+        background-color: #e5e8e8;  /* 淺灰色背景 */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 更輕巧的字體 */
       }
+
+      .container {
+        margin-top: 50px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        border: 1px solid #ddd;  /* 加上細邊框 */
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        color: #2c3e50;
+        text-align: center;
+      }
+
+      h5 {
+        color: #34495e;
+      }
+
       button#logout {
         position: absolute;
-        right: 10%;
-        top: 10%;
+        right: 20px;
+        top: 20px;
+        border-radius: 50%;
+        padding: 10px 15px;
+        font-size: 1rem;
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      button#logout:hover {
+        background-color: #c0392b;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      #date, #select, #search {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      #searchbtn {
+        width: 100px;
+        padding: 10px;
+        margin-left: 10px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+
+      #searchbtn:hover {
+        background-color: #2980b9;
+      }
+
+      table {
+        margin-top: 20px;
+        border-radius: 10px;
+      }
+
+      .status {
+        font-weight: bold;
+      }
+
+      .table th, .table td {
+        vertical-align: middle;
+        text-align: center;
+      }
+
+      .table-bordered {
+        border: 1px solid #ddd;
+      }
+
+      .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f9f9f9;
+      }
+
+      .btn {
+        border-radius: 5px;
+        font-size: 0.9rem;
+      }
+
+      .btn-success {
+        background-color: #2ecc71;
+        border-color: #2ecc71;
+      }
+
+      .btn-danger {
+        background-color: #e74c3c;
+        border-color: #e74c3c;
+      }
+
+      .btn-success:hover {
+        background-color: #27ae60;
+        border-color: #27ae60;
+      }
+
+      .btn-danger:hover {
+        background-color: #c0392b;
+        border-color: #c0392b;
+      }
+
+      @media (max-width: 768px) {
+        #search {
+          width: calc(100% - 80px);
+        }
       }
     </style>
-    <title>雲</title>
+    <title>雲練團管理系統</title>
   </head>
   <body>
     <div class="container">
       <h2>雲練團管理系統</h2>
-      <button type="button" class="btn btn-secondary" id="logout">登出</button>
-      <br />
+      <button type="button" class="btn" id="logout">登出</button>
+
       <h5>場次報到</h5>
-      <input type="date" id="date" />
-      <br />
-      <select id="select">
-        <option value="早上">早上</option>
-        <option value="中午">中午</option>
-        <option value="下午">下午</option>
-        <option value="晚上">晚上</option>
-      </select>
+      <div class="form-group">
+        <input type="date" id="date" class="form-control" />
+        <select id="select" class="form-control">
+          <option value="早上">早上</option>
+          <option value="中午">中午</option>
+          <option value="下午">下午</option>
+          <option value="晚上">晚上</option>
+        </select>
+      </div>
+
       <div id="check">
         <table class="table table-bordered align-middle table-striped">
           <thead>
@@ -52,13 +167,12 @@
           <tbody id="reservation"></tbody>
         </table>
       </div>
-      <br />
-      <h5>會員查詢</h5>
 
-      <input type="text" id="search" />
-      <button class="btn btn-secondary" type="button" id="searchbtn">
-        查詢
-      </button>
+      <h5>會員查詢</h5>
+      <div class="form-group">
+        <input type="text" id="search" class="form-control" placeholder="輸入會員帳戶查詢" />
+        <button class="btn btn-secondary" type="button" id="searchbtn">查詢</button>
+      </div>
 
       <table class="table table-bordered align-middle table-striped">
         <thead>
@@ -72,146 +186,173 @@
         <tbody id="user"></tbody>
       </table>
     </div>
-  </body>
-  <script>
-  //搜尋預約單
-  $(document).on("change", "input#date,select", function () {
-    console.log(this);
-    if ($("input").val() != "" && $("select").val() != "") {
-      const date = $("input").val();
-      const timeSlot = $("select").val();
-      $("tbody#reservation").empty();
+    
+    <!-- Scripts -->
+    <script>
+      // 搜尋預約單
+      $(document).on("change", "input#date,select", function () {
+        console.log(this);
+        if ($("input").val() != "" && $("select").val() != "") {
+          const date = $("input").val();
+          const timeSlot = $("select").val();
+          $("tbody#reservation").empty();
 
-      fetch(
-        `/playball/ReservationsController/RESERVATIONS?date=${date}&timeSlot=${timeSlot}`
-      )
-        .then((resp) => {
-          if (resp.status === 204) {
-            console.log("resp.status===" + resp.status);
-          } else {
-            return resp.json();
-          }
-        })
-        .then((body) => {
-          try {
-            if (body.length != 0) {
-              console.log("body.lenth != null" + body.length != null);
-              let html = "";
-              for (let i = 0; i < body.length; i++) {
-                //   console.log(body[i]);
-                html += `<tr data-id='${body[i].id}' data-user='${body[i].userVO.id}'><th>${body[i].id}</th><td>${body[i].userVO.email}</td><td>${body[i].bookOrder}</td><td class='status'>${body[i].status}</td><td><button class="btn btn-success complete">報到完成</button><button class="btn btn-danger">帳戶警告</button></td></tr>`;
+          fetch(
+            `/playball/ReservationsController/RESERVATIONS?date=${date}&timeSlot=${timeSlot}`
+          )
+            .then((resp) => {
+              if (resp.status === 204) {
+                console.log("resp.status===" + resp.status);
+              } else {
+                return resp.json();
               }
-              $("tbody#reservation").append(html);
-            }
-          } catch (error) {
-            console.log("沒有收到資料");
-          }
-        });
-      }
-    });
-
-    //預約單報到
-    $(document).on("click", "button.complete", function () {
-      const id = $(this).closest("tr").attr("data-id");
-
-      fetch(`/playball/ReservationsController?id=${id}&status=完成報到`, {
-        method: "PUT",
-      })
-        .then((resp) => resp.json())
-        .then((body) => {
-          alert(`message: ${body.message}`);
-          $(this).closest("tr").find("td.status").text("完成報到");
-        });
-    });
-
-    //預約單警告
-    $(document).on("click", "button.btn-danger", function () {
-      const id = $(this).closest("tr").attr("data-id");
-
-      if (confirm("確定送出警告?")) {
-        fetch(
-          `/playball/ReservationsController?id=${id}&status=未到(已送出警告)`,
-          {
-            method: "PUT",
-          }
-        )
-          .then((resp) => resp.json())
-          .then((body) => {
-            alert(`message: ${body.message}`);
-            $(this).closest("tr").find("td.status").text("未到(已送出警告)");
-          });
-      }
-    });
-
-    //會員搜尋
-     $(document).on("click", "button#searchbtn", function () {
-      const email = $("input#search").val().trim();
-      $("tbody#user").empty();
-
-      if (email != "") {
-        fetch(`/UserController/fromadmin?email=${email}`)
-          .then((resp) => {
-            if (resp.status === 204) {
-              console.log("resp.status===" + resp.status);
-            } else {
-              return resp.json();
-            }
-          })
-          .then((body) => {
-            $("input#search").val("");
-            try {
-              if (body.length != 0) {
-                let html = "";
-                for (let i = 0; i < body.length; i++) {
-                  html += `<tr data-id='${body[i].id}'><th>${body[i].id}</th><td>${body[i].email}</td><td class='fouls'>${body[i].fouls}</td><td><button class="btn btn-success reduce">消除違規</button></td></tr>`;
+            })
+            .then((body) => {
+              try {
+                if (body.length != 0) {
+                  let html = "";
+                  for (let i = 0; i < body.length; i++) {
+                    html += `<tr data-id='${body[i].id}' data-user='${body[i].userVO.id}'><th>${body[i].id}</th><td>${body[i].userVO.email}</td><td>${body[i].bookOrder}</td><td class='status'>${body[i].status}</td><td><button class="btn btn-success complete">報到完成</button><button class="btn btn-danger">帳戶警告</button></td></tr>`;
+                  }
+                  $("tbody#reservation").append(html);
                 }
-                $("tbody#user").append(html);
+              } catch (error) {
+                console.log("沒有收到資料");
               }
-            } catch (error) {
-              console.log("沒有收到資料");
-            }
-          });
-      }
-    });
-              //if (body.length != 0) {
-                //let html = "";
-                //for (let i = 0; i < body.length; i++) {
-                  //html += `<tr data-id='${body[i].id}'><th>${body[i].id}</th><td>${body[i].email}</td><td class='fouls'>${body[i].fouls}</td><td><button class="btn btn-success reduce">消除違規</button></td></tr>`;
-                //}
-                //$("tbody#user").append(html);
-              //}
-            //} catch (error) {
-              //console.log("沒有收到資料");
-            
-    //會員搜尋2
+            });
+        }
+      });
 
-    //消除警告
-    $(document).on("click", "button.reduce", function () {
-      const id = $(this).closest("tr").attr("data-id");
-      const text = $(this).closest("tr").find("td.fouls").text() - 1;
+      // 預約單報到
+      $(document).on("click", "button.complete", function () {
+        const id = $(this).closest("tr").attr("data-id");
 
-      if (confirm("確定消除警告?")) {
-        fetch(`/UserController?id=${id}`, {
+        fetch(`/playball/ReservationsController?id=${id}&status=完成報到`, {
           method: "PUT",
         })
           .then((resp) => resp.json())
           .then((body) => {
-            alert(`message: ${body.message}`);
-            $(this).closest("tr").find("td.fouls").text(text);
+            Swal.fire({
+              title: '完成報到',
+              text: body.message,
+              icon: 'success',
+              confirmButtonText: 'OK'
+            });
+            $(this).closest("tr").find("td.status").text("完成報到");
           });
-      }
-    });
+      });
 
-    //登出
-    $(document).on("click", "button#logout", function () {
-      fetch("/playball/AdminController/logout", {
-        method: "POST",
-      })
-        .then((resp) => resp.json())
-        .then((body) => {
-          alert(`message: ${body.message}`);
-          window.location.reload();
+      // 預約單警告
+      $(document).on("click", "button.btn-danger", function () {
+        const id = $(this).closest("tr").attr("data-id");
+
+        Swal.fire({
+          title: '確定送出警告?',
+          text: "此操作將標註為未到且已送出警告。",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: '送出警告',
+          cancelButtonText: '取消'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            fetch(
+              `/playball/ReservationsController?id=${id}&status=未到(已送出警告)`,
+              {
+                method: "PUT",
+              }
+            )
+              .then((resp) => resp.json())
+              .then((body) => {
+                Swal.fire({
+                  title: '警告已送出',
+                  text: body.message,
+                  icon: 'success',
+                  confirmButtonText: 'OK'
+                });
+                $(this).closest("tr").find("td.status").text("未到(已送出警告)");
+              });
+          }
         });
-    });
-  </script>
+      });
+
+      // 會員搜尋
+      $(document).on("click", "button#searchbtn", function () {
+        const email = $("input#search").val().trim();
+        $("tbody#user").empty();
+
+        if (email != "") {
+          fetch(`/UserController/fromadmin?email=${email}`)
+            .then((resp) => {
+              if (resp.status === 204) {
+                console.log("resp.status===" + resp.status);
+              } else {
+                return resp.json();
+              }
+            })
+            .then((body) => {
+              $("input#search").val("");
+              try {
+                if (body.length != 0) {
+                  let html = "";
+                  for (let i = 0; i < body.length; i++) {
+                    html += `<tr data-id='${body[i].id}'><th>${body[i].id}</th><td>${body[i].email}</td><td class='fouls'>${body[i].fouls}</td><td><button class="btn btn-success reduce">消除違規</button></td></tr>`;
+                  }
+                  $("tbody#user").append(html);
+                }
+              } catch (error) {
+                console.log("沒有收到資料");
+              }
+            });
+        }
+      });
+
+      // 消除警告
+      $(document).on("click", "button.reduce", function () {
+        const id = $(this).closest("tr").attr("data-id");
+        const text = $(this).closest("tr").find("td.fouls").text() - 1;
+
+        Swal.fire({
+          title: '確定消除警告?',
+          text: "此操作將減少會員的違規次數。",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: '確定消除',
+          cancelButtonText: '取消'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            fetch(`/UserController?id=${id}`, {
+              method: "PUT",
+            })
+              .then((resp) => resp.json())
+              .then((body) => {
+                Swal.fire({
+                  title: '警告已消除',
+                  text: body.message,
+                  icon: 'success',
+                  confirmButtonText: 'OK'
+                });
+                $(this).closest("tr").find("td.fouls").text(text);
+              });
+          }
+        });
+      });
+
+      // 登出
+      $(document).on("click", "button#logout", function () {
+        fetch("/playball/AdminController/logout", {
+          method: "POST",
+        })
+          .then((resp) => resp.json())
+          .then((body) => {
+            Swal.fire({
+              title: '登出成功',
+              text: body.message,
+              icon: 'success',
+              confirmButtonText: 'OK'
+            });
+            window.location.reload();
+          });
+      });
+    </script>
+  </body>
 </html>

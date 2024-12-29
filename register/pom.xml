@@ -23,6 +23,44 @@
 
     <!-- 依賴部分 -->
       <dependencies>
+      <!-- Spring Boot Starter Web 用於建立 Web 應用 -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!-- Spring Boot Starter Data JPA 用於數據庫操作 -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+
+    <!-- MySQL 驅動 -->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+
+    <!-- Spring Boot Starter Test 用於單元測試 -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+
+    <!-- 如果使用了 WebSocket，則需要加上以下依賴 -->
+   <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-websocket</artifactId>
+        <version>2.7.10</version>  <!-- 確保這與你的 Spring Boot 版本兼容 -->
+    </dependency>
+
+    <!-- Spring Boot 依賴管理插件 -->
+     <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-logging</artifactId>
+        <version>2.7.10</version>  <!-- 確保這與你的 Spring Boot 版本兼容 -->
+    </dependency>
     <!-- Spring Boot Web -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -36,12 +74,6 @@
     <version>8.0.33</version>  <!-- 請確認這是你需要的版本 -->
 </dependency>
 
-    <!-- Spring Boot Security Starter -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-security</artifactId>
-        <version>2.6.0</version> <!-- 指定版本 -->
-    </dependency>
 
     <!-- Spring Boot Data JPA Starter -->
     <dependency>
